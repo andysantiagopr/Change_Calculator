@@ -6,9 +6,29 @@
     <title>Change Calculator</title>
   </head>
   <body>
-    <!-- Write your markup here -->
-
-    <!-- Don't forget to add your <script> tag here -->
-
+    <main>
+      <section class="main-container">
+        <h1>Change Calculator</h1>
+        <section class="functionality">
+          <div class="inputs">
+            <p>How much is due for the sale?</p>
+            <input id="amount-due" type="text" placeholder="Amount due"/>
+            <p>How much has the customer given you?</p>
+            <input id="amount-received" type="text" placeholder="Customer amount given"/>
+          </div>
+          <div class="dollars">
+            <h2>Dollars</h2><p id="dollars-output">0</p>
+          </div>
+          <div class="coins">
+            <h2>Quarters</h2><p id="quarters-output">0</p>
+            <h2>Dimes</h2><p id="dimes-output">0</p>
+            <h2>Nickels</h2><p id="nickels-output">0</p>
+            <h2>Pennies</h2><p id="pennies-output">0</p>
+          </div>
+          <button id="calculate-change" type="button">Calculate</button>
+        </section>
+      </section>
+    </main>
+    <script src="main.js" charset="utf-8"></script>
   </body>
 </html>
