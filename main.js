@@ -1,4 +1,8 @@
-function handleClickEvent(e) {
+/* 
+
+    Previous code:
+
+    function handleClickEvent(e) {
     let amountDue = Number(document.getElementById('amount-due').value);
     let amountReceived = Number(document.getElementById('amount-received').value);
     let change = amountReceived - amountDue;
@@ -28,6 +32,34 @@ function handleClickEvent(e) {
     change = change - pennies * .01; 
     document.getElementById('pennies-output').textContent = pennies; 
 
+}
+
+document.getElementById("calculate-change").onclick = handleClickEvent; */
+
+function handleClickEvent(e) {
+const change = [
+    ['quarters', 25],
+    ['dimes', 10],
+    ['nickels', 5],
+    ['pennies', 1]
+];
+
+let amountDue = Number(document.getElementById('amount-due').value); //Converting the str into amountDue with Number. All input values are strings by default. 
+let amountReceived = Number(document.getElementById('amount-received').value);
+let result = Number((amountReceived - amountDue).toFixed(2));
+
+let dollars = Math.floor(result); 
+    document.getElementById('dollars-output').textContent = dollars;
+
+let cents = Math.round((result - dollars) * 100);
+
+for (let i = 0; i < change.length; i++) {
+    const coinName = change[i][0]; 
+    const coinValue = change[i][1];
+    const count = Math.floor(cents / coinValue);
+    cents -=  count * coinValue;
+    document.getElementById(`${coinName}-output`).textContent = count;
+    } 
 }
 
 document.getElementById("calculate-change").onclick = handleClickEvent;
