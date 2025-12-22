@@ -1,6 +1,8 @@
+
+
 html, body {
-  height: 100%; /*Makes the page fill the screen*/
-  margin: 0; /* Removes browser default spacing*/
+  height: 100%; 
+  margin: 0;
 }
 
 body {
@@ -8,7 +10,7 @@ body {
 }
 
 main {
-    min-height: 100vh; /*Allows content to grow but its not allowed to shrink below this size*/
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
