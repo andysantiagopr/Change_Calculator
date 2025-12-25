@@ -3,49 +3,46 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Change Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cheems Change Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
     <main>
       <section class="main-container">
         <section class="functionality">
-          <h1>Change Calculator</h1>
+          <h1>Cheems Change Calculator</h1>
           <div class="inputs">
             <div class="input1">
             <p>How much is due for the sale?</p>
             <input id="amount-due" type="text" placeholder="Amount due"/>
+              <div id="military-discount">
+                <input id="discount-checkbox" type="checkbox"/>
+                  <label id="discount-text">Apply Military Discount</label>
+              </div>
             </div>
             <div class="input2">
             <p>How much has the customer given you?</p>
             <input id="amount-received" type="text" placeholder="Customer amount given"/>
             </div>
           </div>
-          <div class="change">
-            <div class="dollars">
-              <h2>Dollars</h2><p id="dollars-output">0</p>
-            </div>
-            <div class="coins">
-              <div class="coins-container">
-                <div class="coin">
-                  <h2>Quarters</h2><p id="quarters-output">0</p>
-                </div>
-                <div class="coin">
-                  <h2>Dimes</h2><p id="dimes-output">0</p>
-                </div>
-                <div class="coin">
-                  <h2>Nickels</h2><p id="nickels-output">0</p>
-                </div>
-                <div class="coin">
-                  <h2>Pennies</h2><p id="pennies-output">0</p>
-                </div>
-              </div>
-            </div>
-            <button id="calculate-change" type="button">Calculate!</button>
+            <div class="change-class" id="change-class">
+              <div id ="denomination-controls"></div>
+              <button id="calculate-change" type="button">Calculate!</button>
           </div>
         </section>
+        <div id="military-banner">
+          <img src="./img/military-discount.png">
+          <p>Thank me for my service.</p>
+        </div>
+        <div id="cheems-bonk">
+          <img id="cheems-bat" src="./img/cheems-bat.jpg">
+        </div>
+        </div>
       </section>
     </main>
     <script src="main.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
