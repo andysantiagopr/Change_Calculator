@@ -20,6 +20,12 @@ const activeDenominations = [];
 
 const denControlEl = document.getElementById('denomination-controls'); 
 const divEl = document.getElementById('change-class');
+const filterBtn = document.getElementById('filter-button');
+
+filterBtn.addEventListener("click", () => {
+  denControlEl.classList.toggle("hidden");
+});
+
 
 denominations.forEach(denomination => {
     const divEl = document.createElement('div');
@@ -58,32 +64,48 @@ function updateActiveDenominations() {
 
 updateActiveDenominations();
 
-//Dynamic HTML creation for h2 and p elements making it easier to modify and add more content later. 
+//Dynamic HTML creation for results. Creates h2 and p elements dynamically making it easier to modify and add more content later. 
 //const divEl = document.getElementById('change-class');
 
 denominations.forEach(denomination => {
     const rowEl = document.createElement('div');
     rowEl.id = `${denomination[0]}-row`;
     rowEl.style.display = 'none'; //Hide the row until button is clicked
+    rowEl.className = "flex justify-between items-center py-2 border-b border-slate-200 last:border-b-0 text-center";
 
     const h2El = document.createElement('h2');
     h2El.textContent = denomination[0];
-
+    h2El.className = "text-sm font-medium text-slate-600 text-center";
     const pEl = document.createElement('p');
     pEl.id = `${denomination[0]}-output`;
     pEl.textContent = '0';
-
+    pEl.className = "text-sm font-semibold text-slate-900 text-center";
     rowEl.appendChild(h2El);
     rowEl.appendChild(pEl);
     divEl.appendChild(rowEl);
 });
 
-    const pEl = document.createElement('p');
+//Dynamic message container for total amount of mil discount applied. 
+
+    const discountText = document.createElement('p');
     const labelEl = document.getElementById('discount-text');
-    labelEl.append(pEl);
+    labelEl.append(discountText);
+
+//Reset UI function
+
+function resetUI() {
+    
+    document.getElementById("military-banner").classList.add("hidden"); //blocks the CSS hidden. 
+    document.getElementById("cheems-bonk").classList.add("hidden"); 
+    denominations.forEach(([name]) => {
+        const row = document.getElementById(`${name}-row`);
+            if (row) row.style.display = "none";
+    });
+
+}
 
 function handleClickEvent(e) {
-
+    resetUI(); //Ensures each time the UI will reset
     const militaryDiscount = document.getElementById('discount-checkbox');
     let amountDue = Number(document.getElementById('amount-due').value); 
 
@@ -91,7 +113,7 @@ function handleClickEvent(e) {
     if (militaryDiscount.checked) {
         amountDue -= (amountDue * 0.1); //Military discount set to 10% but can be modified to the business preference. 
         document.getElementById("military-banner").style.display = "block";
-        pEl.textContent = `Total amount due with military discount: $${(amountDue).toFixed(2)}`;
+        discountText.textContent = `Total amount due with military discount: $${(amountDue).toFixed(2)}`;
         
     } else {
         document.getElementById("military-banner").style.display = "none";
@@ -133,6 +155,10 @@ function handleClickEvent(e) {
     }
 
 document.getElementById("calculate-change").onclick = handleClickEvent; 
+
+
+
+
 
 //let change = result; //dollarChange previously
 
